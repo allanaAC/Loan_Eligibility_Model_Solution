@@ -1,9 +1,20 @@
+import logging
 import warnings
 from src.data.load_dataset import load_data, preprocess_data
 from src.visualization.visualize import initial_data_analysis
 from src.feature.build_features import impute_missing_values
 from src.model.train_model import split_data, scale_data, train_logistic_regression, train_random_forest
 from src.model.predict_model import evaluate_model, cross_validate_model
+
+# Configure logging to write to both file and console
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('app.log'),
+        logging.StreamHandler()
+    ]
+)
 
 
 if __name__ == "__main__":
